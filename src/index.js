@@ -45,8 +45,8 @@ const WheelComponent = ({
     console.log(navigator)
     if (navigator.userAgent.indexOf('MSIE') !== -1) {
       canvas = document.createElement('canvas')
-      canvas.setAttribute('width', 1000)
-      canvas.setAttribute('height', 600)
+      canvas.setAttribute('width', window.getComputedStyle(canvas, null).getPropertyValue("width"));
+      canvas.setAttribute('height', window.getComputedStyle(canvas, null).getPropertyValue("height"));
       canvas.setAttribute('id', 'canvas')
       document.getElementById('wheel').appendChild(canvas)
     }
@@ -208,8 +208,7 @@ const WheelComponent = ({
       <canvas
         id='canvas'
         style={{
-          pointerEvents: isFinished && isOnlyOnce ? 'none' : 'auto',
-          width:'100%'
+          pointerEvents: isFinished && isOnlyOnce ? 'none' : 'auto'
         }}
       />
     </div>
